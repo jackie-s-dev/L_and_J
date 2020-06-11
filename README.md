@@ -12,4 +12,5 @@
 # Dependencies
 	[] Python
 		[] Flask
-		[] Virtualenv 
+		[] Virtualenv
+		[] Requests
