@@ -1,9 +1,15 @@
 # L_and_J
 
-## Leonardo and Jackie 
-	- Simple game dev?
-	- Backend? 
-	- Frontend? 
+## Leonardo and Jackie
+	Website centering around totalitarianism
 
-## Project notes 
-	[] Planning?
+## Project notes
+	[] L : Frontend 	
+	 	[] HTML, CSS, JavaScript, Jinja2 Syntax
+	[] J : Backend
+		[] Python {flask}
+
+# Dependencies
+	[] Python
+		[] Flask
+		[] Virtualenv 
