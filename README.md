@@ -14,3 +14,9 @@
 		[] Flask
 		[] Virtualenv
 		[] Requests
+
+# Updates
+- Added a simple function inside of dictator_api that returns titles and links
+	related to search queries.
+- Added a page demonstrating this function as well as HTML/CSS => jackies_api.html
+- Updated app.py to serve /jackies_api

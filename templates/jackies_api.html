@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title> Testing the API </title>
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="jumbotron">
+      <h1> Welcome to Totalitarian Search! </h1>
+      <form action='jackies_api' method='post'>
+        <label for='search_dictator'>
+          Please enter a dictator's name or regime into the search box below: </label>
+        <input type='text' id='search_dictator' name='search_dictator'> <br>
+        <input type='submit' value='SEARCH'>
+      </form>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+      {% for i in range(0,names|length) %}
+      <div class="card border-light mb-3" style="max-width: 20rem;" text-align="center">
+        <h1 class="card-header"> {{ names[i] }} </h1>
+        <div class="card-text"
+          <h4 class="col-md-8 col-md-offset-2"> And here is a link to learn more about this dictator: </h4>
+          <br>
+          <a href='{{ ext_links[i] }}'p> {{ ext_links[i] }} </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </body>
+
+</html>
