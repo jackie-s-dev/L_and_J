@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title>
+      Example Quiz
+    </title>
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    {% if completed != True %}
+    <div class="jumbotron">
+      <h1> Which Totalitarian Regime Are You? </h1>
+      <p> Answer the questionaire below to find out which
+        dictator you are! </p>
+    </div>
+
+    <div class="col-md-8 col-md-offset-20">
+      <form action='/quiz_example', method='post'>
+        <div class="card border-light mb-3" style="max-width: 20rem;" text-align="center">
+          <h4 class="card-header"> Which of these foods look good? </h4>
+          <div class="card-text">
+            <input type="radio" id="food1" name="foods" value="1">
+            <image src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Tgc4qUDMrJylw_EWYbMUtQHaFS%26pid%3DApi&f=1" alt="food 1" name="food1">
+            <input type="radio" id="food2" name="foods" value="2">
+            <image src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.K2n4LvCIVGSPUTl0vZwZIgHaE7%26pid%3DApi&f=1" alt="food 2" name="food2"> <br>
+            <input type="radio" id="food3" name="foods" value="3">
+            <image src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.VenkHWZMmqi7KF10GMngWgHaEK%26pid%3DApi&f=1" alt="food 3" name="food3">
+            <input type="radio" id="food4" name="foods" value="4">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.TJz4B1xH4dcyNaahwmUEnQHaGN%26pid%3DApi&f=1" alt="food 4" name="food4"> <br>
+          </div>
+        </div>
+
+        <div class="card border-light mb-3" style="max-width: 20rem;" text-align="center">
+          <h4 class="card-header"> Which word has the best vibe? </h4>
+            <div class="card-text">
+              <input type="radio" id="coffee" name="word_vibe" value="1">
+              <label for="coffee"> Coffee </label> <br>
+
+              <input type="radio" id="snake" name="word_vibe" value="2">
+              <label for="snake"> Snake </label> <br>
+
+              <input type="radio" id="helicopter" name="word_vibe" value="3">
+              <label for="helicopter"> Helicopter </label> <br>
+
+              <input type="radio" id="mayo" name="word_vibe" value="4">
+              <label for="mayo"> Mayo </label> <br>
+            </div>
+        </div>
+
+        <div class="card border-light mb-3" style="max-width: 20rem;" text-align="center">
+          <h4 class="card-header"> Do you wear socks indoors? </h4>
+            <div class="card-text">
+              <input type="radio" id="yes_socks" name="socks_indoors" value="1">
+              <label for="yes_socks"> Yes </label> <br>
+
+              <input type="radio" id="no_socks" name="socks_indoors" value="2">
+              <label for="no_socks"> No </label> <br>
+            </div>
+        </div>
+
+        <div class="card border-light mb-3" style="max-width: 20rem;" text-align="center">
+          <h4 class="card-header"> If you could tell The Universe anything, what would you tell it? </h4>
+            <div class="card-text">
+              <textarea class="form-control" id="universe" name="universe" rows="2" cols="30">
+              </textarea>
+            </div>
+        </div>
+
+        <div class="card border-light mb-3" style="max-width: 20rem;" text-align="center">
+          <h4 class="card-header"> Do you think that worms are cute? </h4>
+            <div class="card-text">
+              <input type="radio" id="yes_worms" name="worms" value="1">
+              <label for="yes_worms"> Yes </label> <br>
+
+              <input type="radio" id="no_worms" name="worms" value="2">
+              <label for="no_worms"> No </label> <br>
+            </div>
+        </div>
+
+        <input type="submit" value="Submit!">
+      </form>
+    </div>
+    {% elif completed %}
+    <div class="jumbotron">
+      <h1> {{ result }} </h1>
+      <p> You got: {{ result }}</p>
+    </div>
+
+    {% for val in vals %}
+    <div class="col-md-8 col-md-offset-20">
+      <div class="card border-light mb-3" style="max-width: 20rem;" text-align="center">
+        <h4 class="card-header"> {{ val }} </h4>
+          <div class="card-text">
+            <p> Your additonal result is: {{ val }} </p>
+          </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </body>
+</html>
