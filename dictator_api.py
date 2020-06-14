@@ -3,6 +3,7 @@ Helper functions for querying dictators and junk
 """
 import requests
 import random
+from bs4 import BeautifulSoup
 
 API_URL = 'https://en.wikipedia.org/w/api.php'
 
@@ -35,9 +36,38 @@ class Quiz:
     def parse_link_for_list(self):
         """
         This needs to be implemented in order for 'p_randomize'
-        to work.
+        to work. It simply finds the first column in the first list
+        of a wikipedia page and uses the text content.
         """
-        pass
+        return_list = []
+
+        page = requests.get(self.link)
+        soup = BeautifulSoup(page.content, 'html.parser')
+
+        # find by id from the beautiful soup
+        results = soup.find(id='mw-content-text')
+
+        # we will prioritize the first column
+        headers = results.find_all('th')
+        list_elements = results.find_all('td')
+
+        for i in range(0, len(list_elements), len(headers)):
+            href_attr = list_elements[i].find_all('a')
+            for attr in href_attr:
+                if (attr.string != None and self.remove_link_ends(attr.string)):
+                    return_list.append(attr.string)
+
+        return return_list
+
+    def remove_link_ends(self, string):
+        """
+        Parsing wikipedia tags often has embedded links.
+        This function will test if the given string is a
+        numbered link.
+        """
+        if (string[0] == '[' and string[len(string)-1] ==']'):
+            return False
+        return True
 
     def p_randomize(self, answers):
         """
@@ -49,6 +79,8 @@ class Quiz:
         main result. This function also returns a few other
         random indices for fun.
         """
+        num = 0
+        add_result = []
         for answer in answers:
             try:
                 num = num + int(answer)
@@ -59,10 +91,10 @@ class Quiz:
 
         # accessing the list in the specified link
         list_options = self.parse_link_for_list()
-        result_index = num % list_options
+        result_index = num % len(list_options)
 
         # adding other random results to return
         for i in range(0, 5):
-            add_result.append(list_options[random.randint(0,len(list_options)))
+            add_result.append(list_options[random.randint(0,len(list_options)-1)])
 
-        return list_options[result_index], add_result]
+        return list_options[result_index], add_result
