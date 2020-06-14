@@ -8,12 +8,13 @@ Website centering around totalitarianism
 		[] Flask
 		[] Virtualenv
 		[] Requests
+		[] Beautiful Soup
 
 # Updates
 June 13, 2020
 - Created sample quiz page and respective backend. The "Quiz" class
 {located in the dictator_api} is responsible for parsing quizzes of
-all types based on wikipedia pages. 
+all types based on wikipedia pages.
 ======================================================================
 June 12, 2020
 - Added a simple function inside of dictator_api that returns titles and links
